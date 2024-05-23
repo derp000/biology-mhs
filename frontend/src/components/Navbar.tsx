@@ -6,7 +6,7 @@ import { useState } from "react";
 import Dropdown, { SubtitleItemArray } from "./Dropdown";
 import { Link } from "react-router-dom";
 
-import galaxy from "./images/backgrounds/a3.png";
+// import galaxy from "./images/backgrounds/a3.png";
 
 import { Menu } from "@emotion-icons/evaicons-solid/Menu";
 import { Popover } from "@headlessui/react";
@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <nav
       className="bg-cover bg-center flex lg:flex-col flex-row items-center p-4"
-      style={{ backgroundImage: `url(${galaxy})` }}
+      // style={{ backgroundImage: `url(${galaxy})` }}
     >
       <div className="flex lg:justify-center lg:mt-4">
         <div className="bg-black rounded-full">
