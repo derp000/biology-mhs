@@ -15,10 +15,19 @@ const Home = () => {
   }
 
   const auth = getAuth();
+  const user = auth.currentUser;
+  console.log("authstuff");
+  console.log(user);
+
+  let name = null;
+  if (user) {
+    name = user.displayName;
+  }
 
   return (
     <div className="bg-red-300">
       <div className="p-24 bg-blue-300">
+        {name && <p>Hi {name}</p>}
         <button onClick={() => signOut(auth)}>Sign Out</button>
         <div className="flex flex-col gap-5 text-white max-w-[72rem] mx-auto lg:mb-24 mb-6">
           {units}
