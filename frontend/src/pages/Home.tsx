@@ -1,3 +1,4 @@
+import { getAuth, signOut } from "firebase/auth";
 import { NavLink } from "react-router-dom";
 
 const Home = () => {
@@ -13,9 +14,12 @@ const Home = () => {
     );
   }
 
+  const auth = getAuth();
+
   return (
     <div className="bg-red-300">
       <div className="p-24 bg-blue-300">
+        <button onClick={() => signOut(auth)}>Sign Out</button>
         <div className="flex flex-col gap-5 text-white max-w-[72rem] mx-auto lg:mb-24 mb-6">
           {units}
         </div>

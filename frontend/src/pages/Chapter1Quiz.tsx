@@ -1,27 +1,5 @@
 import { useState } from "react";
-
-const questions = [
-  {
-    questionText: "Living things _____.",
-    answerOptions: [
-      { answerText: "respond to stimuli" },
-      { answerText: "reproduce" },
-      { answerText: "have adaptations" },
-      { answerText: "all of the above" },
-    ],
-    correct: 4,
-  },
-  {
-    questionText: "What is the capital of France?",
-    answerOptions: [
-      { answerText: "New York" },
-      { answerText: "London" },
-      { answerText: "Paris" },
-      { answerText: "Dublin" },
-    ],
-    correct: 4,
-  },
-];
+import questions from "./Chapter1Questions";
 
 const Chapter1Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -33,7 +11,7 @@ const Chapter1Quiz = () => {
   const handleAnswerOptionClick = (index: number) => {
     console.log(index);
     console.log("index above");
-    if (index + 1 === questions[0].correct) {
+    if (index + 1 === questions[currentQuestion].correct) {
       setScore(score + 1);
     } else {
       setWrongs([...wrongs, currentQuestion]);
@@ -60,7 +38,13 @@ const Chapter1Quiz = () => {
                 <ul>
                   {wrongs.map((wrongIndex) => (
                     <li key={wrongIndex}>
-                      {questions[wrongIndex].questionText}
+                      {questions[wrongIndex].questionText} (correct answer is{" "}
+                      {
+                        questions[wrongIndex].answerOptions[
+                          questions[wrongIndex].correct-1
+                        ]["answerText"]
+                      }
+                      )
                     </li>
                   ))}
                 </ul>

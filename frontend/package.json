@@ -19,6 +19,7 @@
     "embla-carousel-autoplay": "^8.0.0-rc17",
     "embla-carousel-react": "^8.0.0-rc17",
     "emotion-icons": "^3.27.0",
+    "firebase": "^10.12.1",
     "flowbite": "^2.2.0",
     "flowbite-react": "^0.7.0",
     "localforage": "^1.10.0",
