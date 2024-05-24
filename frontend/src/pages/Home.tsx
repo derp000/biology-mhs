@@ -1,7 +1,9 @@
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Home = () => {
+  const [name, setName] = useState<string | null>(null);
   const units = [];
   for (let i = 1; i <= 15; i++) {
     units.push(
@@ -15,14 +17,17 @@ const Home = () => {
   }
 
   const auth = getAuth();
-  const user = auth.currentUser;
+  // const user = auth.currentUser;
   console.log("authstuff");
-  console.log(user);
+  // console.log(user);
 
-  let name = null;
-  if (user) {
-    name = user.displayName;
-  }
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setName(user.displayName);
+      }
+    });
+  }, [auth]);
 
   return (
     <div className="bg-red-300">
