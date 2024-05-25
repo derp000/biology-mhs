@@ -2,8 +2,6 @@ import { QuizQuestionList } from "../typings/quizTypes";
 
 const CH_NUM = 1;
 
-// TODO: refactor into generic type
-
 const questions: QuizQuestionList = [
   {
     question: "Living things _____.",

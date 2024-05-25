@@ -1,8 +1,8 @@
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { db } from "../config/config";
+import { auth, db } from "../config/config";
 import { QuizQuestionList } from "../typings/quizTypes";
 
 // TOOD: set up review quiz per chapter or all at once
@@ -23,22 +23,24 @@ const Home = () => {
     );
   }
 
-  const auth = getAuth();
-  // const user = auth.currentUser;
   console.log("authstuff");
-  // console.log(user);
 
+  // auth needed as dependency otherwise rerenders nonstop
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         setName(user.displayName);
 
-        const docRef = doc(db, "users", auth.currentUser?.uid as string);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          console.log("showing data");
-          console.log(docSnap.data().wrongQuestions);
-          setWrongs(docSnap.data().wrongQuestions);
+        try {
+          const docRef = doc(db, "users", auth.currentUser?.uid as string);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            console.log("showing data");
+            console.log(docSnap.data().wrongQuestions);
+            setWrongs(docSnap.data().wrongQuestions);
+          }
+        } catch (e) {
+          console.log(e);
         }
       }
     });
