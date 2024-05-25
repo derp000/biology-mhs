@@ -1,8 +1,36 @@
 import { NavLink } from "react-router-dom";
 
 import ch1PDF from "../assets/ch1.pdf";
+import { useEffect } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "../config/config";
+
+// https://firebase.google.com/docs/firestore/query-data/get-data
+// https://www.youtube.com/watch?v=2hR-uWjBAgw
+// https://github.com/machadop1407/react-firebase-course/blob/main/src/App.js
+// https://firebase.google.com/docs/web/modular-upgrade
+
+// TODO: Refactor into generic Chapter component
 
 const Chapter1Home = () => {
+  // const usersListRef = collection(db, `users/${auth.currentUser?.uid}`);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const docRef = doc(db, "users", auth.currentUser?.uid as string);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log(docSnap.data());
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    getUsers();
+  });
+
   return (
     <div className="bg-red-300">
       <div className="p-24 bg-blue-300">

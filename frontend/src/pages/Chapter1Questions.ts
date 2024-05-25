@@ -1,24 +1,34 @@
-const questions = [
+const CH_NUM = 1;
+
+// TODO: refactor into generic type
+
+type QuizQuestion = {
+  question: string;
+  options: string[];
+  correctIndex: number;
+  chapter: number;
+};
+
+export type QuizQuestionList = QuizQuestion[];
+
+const questions: QuizQuestionList = [
   {
-    questionText: "Living things _____.",
-    answerOptions: [
-      { answerText: "respond to stimuli" },
-      { answerText: "reproduce" },
-      { answerText: "have adaptations" },
-      { answerText: "all of the above" },
+    question: "Living things _____.",
+    options: [
+      "respond to stimuli",
+      "reproduce",
+      "have adaptations",
+      "all of the above",
     ],
-    correct: 4,
+    correctIndex: 3,
+    chapter: CH_NUM,
   },
   {
-    questionText:
+    question:
       "The smallest unit of matter that can enter into chemical combination is a _____.",
-    answerOptions: [
-      { answerText: "cell" },
-      { answerText: "atom" },
-      { answerText: "molecule" },
-      { answerText: "neutron" },
-    ],
-    correct: 2,
+    options: ["cell", "atom", "molecule", "neutron"],
+    correctIndex: 1,
+    chapter: CH_NUM,
   },
 ];
 

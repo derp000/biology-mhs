@@ -1,5 +1,7 @@
 import { useState } from "react";
 import questions from "./Chapter1Questions";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { auth, db } from "../config/config";
 
 const Chapter1Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -8,12 +10,21 @@ const Chapter1Quiz = () => {
 
   const [wrongs, setWrongs] = useState<Array<number>>([]);
 
-  const handleAnswerOptionClick = (index: number) => {
+  const handleAnswerOptionClick = async (index: number) => {
     console.log(index);
     console.log("index above");
-    if (index + 1 === questions[currentQuestion].correct) {
+    if (index === questions[currentQuestion].correctIndex) {
       setScore(score + 1);
     } else {
+      try {
+        const docRef = doc(db, "users", auth.currentUser?.uid as string);
+        updateDoc(docRef, {
+          wrongQuestions: arrayUnion(questions[currentQuestion]),
+        });
+      } catch (e) {
+        console.log(e);
+      }
+
       setWrongs([...wrongs, currentQuestion]);
     }
     const nextQuestion = currentQuestion + 1;
@@ -38,11 +49,9 @@ const Chapter1Quiz = () => {
                 <ul>
                   {wrongs.map((wrongIndex) => (
                     <li key={wrongIndex}>
-                      {questions[wrongIndex].questionText} (correct answer is{" "}
+                      {questions[wrongIndex].question} (correct answer is{" "}
                       {
-                        questions[wrongIndex].answerOptions[
-                          questions[wrongIndex].correct-1
-                        ]["answerText"]
+                        questions[wrongIndex].options[questions[wrongIndex].correctIndex]
                       }
                       )
                     </li>
@@ -53,15 +62,15 @@ const Chapter1Quiz = () => {
               <>
                 <h1 className="lg:text-5xl text-3xl font-bold">
                   Question {currentQuestion + 1}/{questions.length}{" "}
-                  {questions[currentQuestion].questionText}
+                  {questions[currentQuestion].question}
                 </h1>
-                {questions[currentQuestion].answerOptions.map((ans, i) => (
+                {questions[currentQuestion].options.map((ans, i) => (
                   <button
-                    key={ans.answerText}
+                    key={ans}
                     onClick={() => handleAnswerOptionClick(i)}
                     className="bg-purple-300 text-left rounded-lg p-4"
                   >
-                    {ans.answerText}
+                    {ans}
                   </button>
                 ))}
               </>
