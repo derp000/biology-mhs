@@ -3,7 +3,10 @@ import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { db } from "../config/config";
-import { QuizQuestionList } from "./Chapter1Questions";
+import { QuizQuestionList } from "../typings/quizTypes";
+
+// TOOD: set up review quiz per chapter or all at once
+// should update/remove questions from wrongs when answered correctly
 
 const Home = () => {
   const [name, setName] = useState<string | null>(null);

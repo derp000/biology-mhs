@@ -1,15 +1,8 @@
+import { QuizQuestionList } from "../typings/quizTypes";
+
 const CH_NUM = 1;
 
 // TODO: refactor into generic type
-
-type QuizQuestion = {
-  question: string;
-  options: string[];
-  correctIndex: number;
-  chapter: number;
-};
-
-export type QuizQuestionList = QuizQuestion[];
 
 const questions: QuizQuestionList = [
   {
