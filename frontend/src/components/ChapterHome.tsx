@@ -1,6 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
-import ch1PDF from "../assets/ch1.pdf";
 import { useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../config/config";
@@ -10,10 +9,10 @@ import { auth, db } from "../config/config";
 // https://github.com/machadop1407/react-firebase-course/blob/main/src/App.js
 // https://firebase.google.com/docs/web/modular-upgrade
 
-// TODO: Refactor into generic Chapter component
-
-const Chapter1Home = () => {
+const ChapterHome = () => {
   // const usersListRef = collection(db, `users/${auth.currentUser?.uid}`);
+
+  const { chapterNumber } = useParams();
 
   useEffect(() => {
     const getUsers = async () => {
@@ -35,8 +34,9 @@ const Chapter1Home = () => {
     <div className="bg-red-300">
       <div className="p-24 bg-blue-300">
         <div className="flex flex-col gap-5 text-white max-w-[72rem] mx-auto lg:mb-24 mb-6">
+          <h1>This is chapter {chapterNumber}</h1>
           <NavLink
-            to="/ch1/quiz"
+            to="quiz"
             className="bg-purple-300 text-center rounded-lg p-4"
           >
             <button>Quiz</button>
@@ -44,7 +44,10 @@ const Chapter1Home = () => {
           <NavLink to="/customquiz">
             <button>Review incorrectly answered questions</button>
           </NavLink>
-          <a href={ch1PDF} className="bg-purple-300 text-center rounded-lg p-4">
+          <a
+            href={`/src/assets/ch${chapterNumber}.pdf`}
+            className="bg-purple-300 text-center rounded-lg p-4"
+          >
             <button>Chapter Summary</button>
           </a>
         </div>
@@ -53,4 +56,4 @@ const Chapter1Home = () => {
   );
 };
 
-export default Chapter1Home;
+export default ChapterHome;

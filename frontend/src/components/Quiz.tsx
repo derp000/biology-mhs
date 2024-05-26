@@ -1,18 +1,21 @@
 import { useState } from "react";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../config/config";
-import { QuizQuestionList } from "../typings/quizTypes";
+import { useParams } from "react-router-dom";
+import questionLists from "../questions/questionLists";
 
-interface QuizProps {
-  questions: QuizQuestionList;
-}
-
-const Quiz = ({ questions }: QuizProps) => {
+const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [showScore, setShowScore] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
 
   const [wrongs, setWrongs] = useState<Array<number>>([]);
+
+  const { chapterNumber } = useParams();
+  if (!chapterNumber) {
+    return <p>Error loading quiz.</p>;
+  }
+  const questions = questionLists[Number(chapterNumber) - 1];
 
   const handleAnswerOptionClick = async (index: number) => {
     console.log(index);

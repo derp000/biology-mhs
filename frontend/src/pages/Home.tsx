@@ -15,7 +15,7 @@ const Home = () => {
   for (let i = 1; i <= 15; i++) {
     units.push(
       <NavLink
-        to={`/ch${i}`}
+        to={`/chapter/${i}`}
         className="bg-purple-300 text-center text-2xl font-semibold rounded-lg p-4"
       >
         <button>Chapter {i}</button>
