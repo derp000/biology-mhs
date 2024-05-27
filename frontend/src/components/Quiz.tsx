@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
+import {
+  arrayRemove,
+  arrayUnion,
+  doc,
+  getDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { auth, db } from "../config/config";
 import { useLocation, useParams } from "react-router-dom";
 import questionLists from "../questions/questionLists";
@@ -17,9 +23,6 @@ const Quiz = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const { chapterNumber } = useParams();
-  // if (!chapterNumber) {
-  //   return <p>Error loading quiz.</p>;
-  // }
 
   const path = useLocation();
   useEffect(() => {
@@ -61,6 +64,14 @@ const Quiz = () => {
     console.log(index);
     console.log("index above");
     if (index === questions[currentQuestion].correctIndex) {
+      try {
+        const docRef = doc(db, "users", auth.currentUser?.uid as string);
+        updateDoc(docRef, {
+          wrongQuestions: arrayRemove(questions[currentQuestion]),
+        });
+      } catch (e) {
+        console.log(e);
+      }
       setScore(score + 1);
     } else {
       try {
@@ -74,6 +85,7 @@ const Quiz = () => {
 
       setWrongs([...wrongs, currentQuestion]);
     }
+
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
