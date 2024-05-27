@@ -96,20 +96,26 @@ const Quiz = () => {
   };
 
   return (
-    <div className="bg-red-300">
-      <div className="p-24 bg-blue-300">
+    <div className="">
+      <div className="bg-text-700 min-h-[100dvh] flex justify-center items-center">
         <div>
-          <div className="flex flex-col gap-5 text-white max-w-[72rem] mx-auto lg:mb-24 mb-6">
+          <div className="text-white w-[72rem]">
             {showScore ? (
-              <>
-                <p>
-                  You got {score}/{questions.length} correct!
+              <div className="text-center">
+                <h1 className="text-5xl mb-5">
+                  You got{" "}
+                  <span className="font-semibold">
+                    {score}/{questions.length}
+                  </span>{" "}
+                  questions correct!
+                </h1>
+                <p className="text-4xl mb-3">
+                  You got the following questions wrong:
                 </p>
-                <p>You got the following wrong:</p>
                 <ul>
                   {wrongs.map((wrongIndex) => (
-                    <li key={wrongIndex}>
-                      {questions[wrongIndex].question} (correct answer is{" "}
+                    <li key={wrongIndex} className="text-3xl font-bold">
+                      {questions[wrongIndex].question} (
                       {
                         questions[wrongIndex].options[
                           questions[wrongIndex].correctIndex
@@ -119,22 +125,28 @@ const Quiz = () => {
                     </li>
                   ))}
                 </ul>
-              </>
+              </div>
             ) : (
               <>
-                <h1 className="lg:text-5xl text-3xl font-bold">
-                  Question {currentQuestion + 1}/{questions.length}{" "}
-                  {questions[currentQuestion].question}
-                </h1>
-                {questions[currentQuestion].options.map((ans, i) => (
-                  <button
-                    key={ans}
-                    onClick={() => handleAnswerOptionClick(i)}
-                    className="bg-purple-300 text-left rounded-lg p-4"
-                  >
-                    {ans}
-                  </button>
-                ))}
+                <div className="flex flex-col mb-8 leading-none">
+                  <h1 className="text-2xl font-semibold">
+                    Question {currentQuestion + 1}/{questions.length}
+                  </h1>
+                  <p className="text-5xl font-bold">
+                    {questions[currentQuestion].question}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-4">
+                  {questions[currentQuestion].options.map((ans, i) => (
+                    <button
+                      key={ans}
+                      onClick={() => handleAnswerOptionClick(i)}
+                      className="bg-text-200 text-left text-xl font-semibold rounded-lg p-4"
+                    >
+                      {ans}
+                    </button>
+                  ))}
+                </div>
               </>
             )}
           </div>
