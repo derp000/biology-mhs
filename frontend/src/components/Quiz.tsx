@@ -12,6 +12,7 @@ import questionLists from "../questions/questionLists";
 import { onAuthStateChanged } from "firebase/auth";
 import { QuizQuestion, QuizQuestionList } from "../typings/quizTypes";
 
+// https://highered.mheducation.com/sites/0072919345/student_view0/chapter1/multiple_choice_quiz.html
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [showScore, setShowScore] = useState<boolean>(false);
