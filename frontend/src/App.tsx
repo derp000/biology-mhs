@@ -16,6 +16,7 @@ import ChapterHome from "./components/ChapterHome";
 import Quiz from "./components/Quiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import About from "./pages/About";
 
 const Layout = () => (
   <>
@@ -43,22 +44,45 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "about",
+        element: <About />,
+      },
+      {
         path: "chapter",
         children: [
           {
             path: ":chapterNumber",
-            element: <ChapterHome />,
+            element: (
+              <AuthRoute>
+                <ChapterHome />,
+              </AuthRoute>
+            ),
           },
           {
             path: ":chapterNumber/quiz",
-            element: <Quiz />,
+            element: (
+              <AuthRoute>
+                <Quiz />
+              </AuthRoute>
+            ),
           },
-          { path: ":chapterNumber/chapterreview", element: <Quiz /> },
+          {
+            path: ":chapterNumber/chapterreview",
+            element: (
+              <AuthRoute>
+                <Quiz />
+              </AuthRoute>
+            ),
+          },
         ],
       },
       {
         path: "cumulativereview",
-        element: <Quiz />,
+        element: (
+          <AuthRoute>
+            <Quiz />
+          </AuthRoute>
+        ),
       },
     ],
   },
