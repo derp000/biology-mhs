@@ -20,7 +20,7 @@ const Home = () => {
         className="bg-slate-100 text-center text-2xl font-semibold rounded-lg p-4"
       >
         <button>
-          Chapter {i + 1}: {chapters[i]}
+          Chapter {i + 1}: {chapters[i].title}
         </button>
       </NavLink>
     );
