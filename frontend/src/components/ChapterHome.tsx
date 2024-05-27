@@ -41,7 +41,7 @@ const ChapterHome = () => {
           >
             <button>Quiz</button>
           </NavLink>
-          <NavLink to="/customquiz">
+          <NavLink to="customquiz">
             <button>Review incorrectly answered questions</button>
           </NavLink>
           <a
