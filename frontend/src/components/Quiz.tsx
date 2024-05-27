@@ -1,8 +1,10 @@
-import { useState } from "react";
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../config/config";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import questionLists from "../questions/questionLists";
+import { onAuthStateChanged } from "firebase/auth";
+import { QuizQuestionList } from "../typings/quizTypes";
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -10,12 +12,41 @@ const Quiz = () => {
   const [score, setScore] = useState<number>(0);
 
   const [wrongs, setWrongs] = useState<Array<number>>([]);
+  const [questions, setQuestions] = useState<QuizQuestionList>([]);
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const { chapterNumber } = useParams();
-  if (!chapterNumber) {
-    return <p>Error loading quiz.</p>;
+  // if (!chapterNumber) {
+  //   return <p>Error loading quiz.</p>;
+  // }
+
+  const path = useLocation();
+  useEffect(() => {
+    if (path.pathname.endsWith("cumulativeReview")) {
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          try {
+            const docRef = doc(db, "users", auth.currentUser?.uid as string);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+              setQuestions(docSnap.data().wrongQuestions);
+              setIsLoading(false);
+            }
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      });
+    } else if (path.pathname.endsWith("quiz")) {
+      setQuestions(questionLists[Number(chapterNumber) - 1]);
+      setIsLoading(false);
+    }
+  }, [setIsLoading]);
+
+  if (isLoading) {
+    return <p>Loading!</p>;
   }
-  const questions = questionLists[Number(chapterNumber) - 1];
 
   const handleAnswerOptionClick = async (index: number) => {
     console.log(index);

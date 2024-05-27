@@ -4,7 +4,7 @@ import { QuizQuestionList } from "../typings/quizTypes";
 
 export const getAllWrongQuestions = (
   auth: Auth,
-  db: Firestore
+  db: Firestore,
 ): QuizQuestionList | undefined => {
   let wrongs: QuizQuestionList | undefined = undefined;
   onAuthStateChanged(auth, async (user) => {
