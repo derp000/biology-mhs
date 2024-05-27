@@ -41,7 +41,10 @@ const ChapterHome = () => {
           >
             <button>Quiz</button>
           </NavLink>
-          <NavLink to="customquiz">
+          <NavLink
+            to="chapterreview"
+            className="bg-purple-300 text-center rounded-lg p-4"
+          >
             <button>Review incorrectly answered questions</button>
           </NavLink>
           <a

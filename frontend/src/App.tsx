@@ -39,10 +39,11 @@ const router = createBrowserRouter([
         path: ":chapterNumber/quiz",
         element: <Quiz />,
       },
+      { path: ":chapterNumber/chapterreview", element: <Quiz /> },
     ],
   },
   {
-    path: "cumulativeReview",
+    path: "cumulativereview",
     element: <Quiz />,
   },
   {

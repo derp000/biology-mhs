@@ -59,7 +59,7 @@ const Home = () => {
         </ul>
         <div className="flex flex-col gap-5 text-white max-w-[72rem] mx-auto lg:mb-24 mb-6">
           <NavLink
-            to={`/cumulativeReview`}
+            to={`/cumulativereview`}
             className="bg-purple-300 text-center text-2xl font-semibold rounded-lg p-4"
           >
             <button>Review all wrongs</button>

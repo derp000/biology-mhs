@@ -4,7 +4,7 @@ import { auth, db } from "../config/config";
 import { useLocation, useParams } from "react-router-dom";
 import questionLists from "../questions/questionLists";
 import { onAuthStateChanged } from "firebase/auth";
-import { QuizQuestionList } from "../typings/quizTypes";
+import { QuizQuestion, QuizQuestionList } from "../typings/quizTypes";
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -23,14 +23,23 @@ const Quiz = () => {
 
   const path = useLocation();
   useEffect(() => {
-    if (path.pathname.endsWith("cumulativeReview")) {
+    if (path.pathname.endsWith("review")) {
       onAuthStateChanged(auth, async (user) => {
         if (user) {
           try {
             const docRef = doc(db, "users", auth.currentUser?.uid as string);
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
-              setQuestions(docSnap.data().wrongQuestions);
+              let reviewList = docSnap.data().wrongQuestions;
+
+              if (path.pathname.endsWith("chapterreview")) {
+                reviewList = reviewList.filter(
+                  (question: QuizQuestion) =>
+                    question.chapter === Number(chapterNumber)
+                );
+              }
+
+              setQuestions(reviewList);
               setIsLoading(false);
             }
           } catch (e) {
