@@ -22,16 +22,10 @@ const Login = () => {
           await setDoc(doc(db, "users", response.user.uid), {
             wrongQuestions: [
               {
-                question: "hiworld?",
-                options: ["aa", "bbb"],
+                question: "Can't review yet, you're a new user!",
+                options: ["ok"],
                 correctIndex: 0,
                 chapter: 1,
-              },
-              {
-                question: "hiworld?2",
-                options: ["aa", "bbb"],
-                correctIndex: 0,
-                chapter: 3,
               },
             ],
           });

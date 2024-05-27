@@ -1,18 +1,17 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { auth, db } from "../config/config";
-// import { QuizQuestionList } from "../typings/quizTypes";
+import { auth } from "../config/config";
 import { Quiz } from "@emotion-icons/material-rounded/Quiz";
 import { Khanacademy } from "@emotion-icons/simple-icons/Khanacademy";
 import { Pencil } from "@emotion-icons/icomoon/Pencil";
 import { LightBulb } from "@emotion-icons/heroicons-solid/LightBulb";
 import { chapters } from "../utils/chapters";
+
 // TODO: put comments on gc into the website as extra resources
+
 const Home = () => {
   const [name, setName] = useState<string | null>(null);
-  // const [wrongs, setWrongs] = useState<QuizQuestionList | undefined>(undefined);
   const units = [];
   for (let i = 0; i < 20; i++) {
     units.push(
@@ -34,18 +33,6 @@ const Home = () => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         setName(user.displayName);
-
-        try {
-          const docRef = doc(db, "users", auth.currentUser?.uid as string);
-          const docSnap = await getDoc(docRef);
-          if (docSnap.exists()) {
-            console.log("showing data");
-            console.log(docSnap.data().wrongQuestions);
-            // setWrongs(docSnap.data().wrongQuestions);
-          }
-        } catch (e) {
-          console.log(e);
-        }
       }
     });
   }, [auth]);
@@ -59,14 +46,6 @@ const Home = () => {
             <span className="font-bold">{name.split(" ")[0]}</span>!
           </div>
         )}
-        {/* <p>Here are the questions you missed:</p>
-          <ul>
-            {wrongs?.map((questionMetadata) => (
-              <li key={questionMetadata.question}>
-                {questionMetadata.question}
-              </li>
-            ))}
-          </ul> */}
         <div className="bg-primary p-5 rounded-md">
           <div className="m-5">
             <h2 className="font-bold text-3xl mb-5 text-white text-center">
