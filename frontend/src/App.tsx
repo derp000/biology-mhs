@@ -1,6 +1,6 @@
 // https://www.youtube.com/watch?v=b_52NmIfDr8
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 // https://stackoverflow.com/questions/74168742/how-to-template-jsx-with-createbrowserrouter
 
@@ -14,41 +14,53 @@ import AuthRoute from "./components/auth/AuthRoute";
 import ChapterHome from "./components/ChapterHome";
 
 import Quiz from "./components/Quiz";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+const Layout = () => (
+  <>
+    <Navbar />
+    <Outlet />
+    <Footer />
+  </>
+);
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: (
-      <AuthRoute>
-        <Home />
-      </AuthRoute>
-    ),
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "chapter",
+    element: <Layout />,
+    errorElement: <p>404</p>,
     children: [
       {
-        path: ":chapterNumber",
-        element: <ChapterHome />,
+        path: "/",
+        element: (
+          <AuthRoute>
+            <Home />
+          </AuthRoute>
+        ),
       },
       {
-        path: ":chapterNumber/quiz",
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "chapter",
+        children: [
+          {
+            path: ":chapterNumber",
+            element: <ChapterHome />,
+          },
+          {
+            path: ":chapterNumber/quiz",
+            element: <Quiz />,
+          },
+          { path: ":chapterNumber/chapterreview", element: <Quiz /> },
+        ],
+      },
+      {
+        path: "cumulativereview",
         element: <Quiz />,
       },
-      { path: ":chapterNumber/chapterreview", element: <Quiz /> },
     ],
-  },
-  {
-    path: "cumulativereview",
-    element: <Quiz />,
-  },
-  {
-    path: "*",
-    element: <p>404</p>,
   },
 ]);
 

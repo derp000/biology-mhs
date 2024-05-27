@@ -82,7 +82,7 @@ const ChapterHome = () => {
                 to="quiz"
                 className="bg-secondary-600 text-text font-semibold rounded-lg p-4"
               >
-                <button>10-Question Quiz</button>
+                <button>Randomized Quiz</button>
               </NavLink>
               <NavLink
                 to="chapterreview"

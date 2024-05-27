@@ -1,4 +1,4 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -51,13 +51,12 @@ const Home = () => {
   }, [auth]);
 
   return (
-    <div className="p-24 bg-background">
-      <div className="flex flex-col gap-5 text-text max-w-[72rem] mx-auto lg:mb-24 mb-6">
+    <div className="p-12 bg-background">
+      <div className="flex flex-col gap-5 text-text max-w-[72rem] mx-auto">
         {name && (
-          <div className="text-text text-2xl">
+          <div className="text-text text-2xl mb-2">
             <span>Welcome back, </span>
             <span className="font-bold">{name.split(" ")[0]}</span>!
-            <button onClick={() => signOut(auth)}>Sign Out</button>
           </div>
         )}
         {/* <p>Here are the questions you missed:</p>
