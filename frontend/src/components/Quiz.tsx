@@ -96,60 +96,58 @@ const Quiz = () => {
   };
 
   return (
-    <div className="">
-      <div className="bg-text-700 min-h-[100dvh] flex justify-center items-center">
-        <div>
-          <div className="text-white w-[72rem]">
-            {showScore ? (
-              <div className="text-center">
-                <h1 className="text-5xl mb-5">
-                  You got{" "}
-                  <span className="font-semibold">
-                    {score}/{questions.length}
-                  </span>{" "}
-                  questions correct!
+    <div className="bg-text-700 min-h-[100dvh] flex justify-center items-center">
+      <div>
+        <div className="text-white w-[72rem]">
+          {showScore ? (
+            <div className="text-center">
+              <h1 className="text-5xl mb-5">
+                You got{" "}
+                <span className="font-semibold">
+                  {score}/{questions.length}
+                </span>{" "}
+                questions correct!
+              </h1>
+              <p className="text-4xl mb-3">
+                You got the following questions wrong:
+              </p>
+              <ul>
+                {wrongs.map((wrongIndex) => (
+                  <li key={wrongIndex} className="text-3xl font-bold">
+                    {questions[wrongIndex].question} (
+                    {
+                      questions[wrongIndex].options[
+                        questions[wrongIndex].correctIndex
+                      ]
+                    }
+                    )
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <>
+              <div className="flex flex-col mb-8 leading-none">
+                <h1 className="text-2xl font-semibold">
+                  Question {currentQuestion + 1}/{questions.length}
                 </h1>
-                <p className="text-4xl mb-3">
-                  You got the following questions wrong:
+                <p className="text-5xl font-bold">
+                  {questions[currentQuestion].question}
                 </p>
-                <ul>
-                  {wrongs.map((wrongIndex) => (
-                    <li key={wrongIndex} className="text-3xl font-bold">
-                      {questions[wrongIndex].question} (
-                      {
-                        questions[wrongIndex].options[
-                          questions[wrongIndex].correctIndex
-                        ]
-                      }
-                      )
-                    </li>
-                  ))}
-                </ul>
               </div>
-            ) : (
-              <>
-                <div className="flex flex-col mb-8 leading-none">
-                  <h1 className="text-2xl font-semibold">
-                    Question {currentQuestion + 1}/{questions.length}
-                  </h1>
-                  <p className="text-5xl font-bold">
-                    {questions[currentQuestion].question}
-                  </p>
-                </div>
-                <div className="flex flex-col gap-4">
-                  {questions[currentQuestion].options.map((ans, i) => (
-                    <button
-                      key={ans}
-                      onClick={() => handleAnswerOptionClick(i)}
-                      className="bg-text-200 text-left text-xl font-semibold rounded-lg p-4"
-                    >
-                      {ans}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
+              <div className="flex flex-col gap-4">
+                {questions[currentQuestion].options.map((ans, i) => (
+                  <button
+                    key={ans}
+                    onClick={() => handleAnswerOptionClick(i)}
+                    className="bg-text-200 text-left text-xl font-semibold rounded-lg p-4"
+                  >
+                    {ans}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
