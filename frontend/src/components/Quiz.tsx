@@ -52,10 +52,18 @@ const Quiz = () => {
         }
       });
     } else if (path.pathname.endsWith("quiz")) {
-      setQuestions(questionLists[Number(chapterNumber) - 1]);
+      // https://stackoverflow.com/a/46545530
+      const unshuffledList = questionLists[Number(chapterNumber) - 1];
+      const shuffledList = unshuffledList
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value)
+        .slice(0, 10);
+      console.log(shuffledList);
+      setQuestions(shuffledList);
       setIsLoading(false);
     }
-  }, [setIsLoading]);
+  }, [setIsLoading, path.pathname]);
 
   if (isLoading) {
     return <p>Loading!</p>;
@@ -96,7 +104,7 @@ const Quiz = () => {
   };
 
   return (
-    <div className="bg-text-700 min-h-[100dvh] flex justify-center items-center">
+    <div className="bg-text-700 py-10 min-h-[100dvh] flex justify-center items-center">
       <div>
         <div className="text-white w-[72rem]">
           {showScore ? (
@@ -111,19 +119,25 @@ const Quiz = () => {
               <p className="text-4xl mb-3">
                 You got the following questions wrong:
               </p>
-              <ul>
+              <ol className="list-decimal">
                 {wrongs.map((wrongIndex) => (
-                  <li key={wrongIndex} className="text-3xl font-bold">
-                    {questions[wrongIndex].question} (
-                    {
-                      questions[wrongIndex].options[
-                        questions[wrongIndex].correctIndex
-                      ]
-                    }
-                    )
+                  <li
+                    key={wrongIndex}
+                    className="text-3xl text-left font-semibold"
+                  >
+                    {questions[wrongIndex].question}{" "}
+                    <span className="font-bold text-accent-400">
+                      (
+                      {
+                        questions[wrongIndex].options[
+                          questions[wrongIndex].correctIndex
+                        ]
+                      }
+                      )
+                    </span>
                   </li>
                 ))}
-              </ul>
+              </ol>
             </div>
           ) : (
             <>
