@@ -21,14 +21,7 @@ const Login = () => {
         if (getAdditionalUserInfo(response)?.isNewUser) {
           console.log("isnewuser");
           await setDoc(doc(db, "users", response.user.uid), {
-            wrongQuestions: [
-              {
-                question: "Can't review yet, you're a new user!",
-                options: ["ok"],
-                correctIndex: 0,
-                chapter: 1,
-              },
-            ],
+            wrongQuestions: [],
           });
         } else {
           console.log("not new user");

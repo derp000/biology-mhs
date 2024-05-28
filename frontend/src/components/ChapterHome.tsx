@@ -21,7 +21,7 @@ const ChapterHome = () => {
         const docRef = doc(db, "users", auth.currentUser?.uid as string);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          console.log(docSnap.data());
+          console.log(docSnap.data().wrongQuestions);
         }
       } catch (e) {
         console.log(e);

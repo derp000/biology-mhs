@@ -42,6 +42,8 @@ const Quiz = () => {
                     question.chapter === Number(chapterNumber)
                 );
               }
+              console.log("reviewlist");
+              console.log(reviewList);
 
               setQuestions(reviewList);
               setIsLoading(false);
@@ -103,6 +105,7 @@ const Quiz = () => {
     }
   };
 
+  // TODO: refactor nested ternary
   return (
     <div className="bg-text-700 py-10 min-h-[100dvh] flex justify-center items-center">
       <div>
@@ -139,7 +142,8 @@ const Quiz = () => {
                 ))}
               </ol>
             </div>
-          ) : (
+          ) : path.pathname.endsWith("quiz") ||
+            (!path.pathname.endsWith("quiz") && questions.length !== 0) ? (
             <>
               <div className="flex flex-col mb-8 leading-none">
                 <h1 className="text-2xl font-semibold">
@@ -161,6 +165,10 @@ const Quiz = () => {
                 ))}
               </div>
             </>
+          ) : (
+            <h1 className="text-2xl font-bold text-center">
+              No questions to review!
+            </h1>
           )}
         </div>
       </div>
