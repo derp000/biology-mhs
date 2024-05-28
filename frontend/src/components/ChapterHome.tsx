@@ -44,11 +44,11 @@ const ChapterHome = () => {
             </h2>
             <div className="flex flex-wrap justify-center text-white gap-3 text-xl">
               {chapters[Number(chapterNumber) - 1].resources.map(
-                ({ name, to, external }) => (
+                ({ name, to }) => (
                   <NavLink
                     to={to}
                     key={to}
-                    target={external ? "_blank" : ""}
+                    target={"_blank"}
                     className="bg-secondary-600 text-text font-semibold rounded-lg p-4"
                   >
                     <button className="flex flex-row items-center">
@@ -57,13 +57,6 @@ const ChapterHome = () => {
                   </NavLink>
                 )
               )}
-              <NavLink
-                to={`/src/assets/ch${chapterNumber}.pdf`}
-                target="_blank"
-                className="bg-secondary-600 text-text font-semibold rounded-lg p-4"
-              >
-                <button>Chapter Summary</button>
-              </NavLink>
             </div>
           </div>
         </div>

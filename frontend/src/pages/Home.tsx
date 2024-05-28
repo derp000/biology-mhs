@@ -87,7 +87,7 @@ const Home = () => {
               >
                 <button className="flex flex-row items-center">
                   <LightBulb height={50} width={50} />
-                  Personal Advice
+                  Study Advice
                 </button>
               </NavLink>
             </div>
