@@ -82,7 +82,7 @@ const Home = () => {
                 </button>
               </NavLink>
               <NavLink
-                to={""}
+                to={"advice"}
                 className="bg-secondary-600 text-text font-semibold rounded-lg p-4"
               >
                 <button className="flex flex-row items-center">

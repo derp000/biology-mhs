@@ -17,6 +17,7 @@ import Quiz from "./components/Quiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import About from "./pages/About";
+import Advice from "./pages/Advice";
 
 const Layout = () => (
   <>
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "advice",
+        element: <Advice />,
       },
       {
         path: "chapter",
