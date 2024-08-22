@@ -59,8 +59,8 @@ const Quiz = () => {
       const shuffledList = unshuffledList
         .map((value) => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
-        .map(({ value }) => value)
-        .slice(0, 10);
+        .map(({ value }) => value);
+
       console.log(shuffledList);
       setQuestions(shuffledList);
       setIsLoading(false);
