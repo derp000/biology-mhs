@@ -1,6 +1,6 @@
 # biology-mhs
 
-Built with TypeScript, React, and Firebase using Vite.
+Built with React and Firebase using Typescript, Tailwind, and Vite.
 
 Your `config/config.ts` should look like this:
 
