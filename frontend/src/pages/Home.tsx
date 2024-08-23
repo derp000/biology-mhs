@@ -38,7 +38,7 @@ const Home = () => {
   }, [auth]);
 
   return (
-    <div className="p-12 bg-background">
+    <div className="p-12 bg-slate-100">
       <div className="flex flex-col gap-5 text-text max-w-[72rem] mx-auto">
         {name && (
           <div className="text-text text-2xl mb-2">

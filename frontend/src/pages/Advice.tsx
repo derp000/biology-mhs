@@ -3,8 +3,8 @@ import { ExternalLinkOutline } from "@emotion-icons/evaicons-outline/ExternalLin
 
 const Advice = () => {
   return (
-    <div className="bg-emerald-800">
-      <div className="max-w-[72rem] bg-slate-100 mx-auto p-24">
+    <div className="bg-gradient-to-r from-emerald-700 to-cyan-500">
+      <div className="max-w-[72rem] bg-slate-100 mx-auto p-24 shadow-[0_5px_10px_5px_rgb(241_245_249)]">
         <h1 className="font-bold text-3xl">1. Take notes before class</h1>
         <p className="text-xl ml-12">
           You will find most classes are taught lecture style. Thus if you don't
@@ -30,7 +30,7 @@ const Advice = () => {
           <NavLink
             to={`https://lsc.cornell.edu/how-to-study/taking-notes/cornell-note-taking-system/`}
             target="_blank"
-            className={"underline"}
+            className={"underline inline-block"}
           >
             Cornell system{""}
             <sup>
@@ -66,7 +66,7 @@ const Advice = () => {
           <NavLink
             to={`https://highered.mheducation.com/sites/0072919345/student_view0/chapter1/multiple_choice_quiz.html`}
             target="_blank"
-            className={"underline"}
+            className={"underline inline-block"}
           >
             Freshman Biology Quizzes{""}
             <sup>
@@ -77,7 +77,7 @@ const Advice = () => {
           <NavLink
             to={`https://media.pearsoncmg.com/bc/bc_campbell_biology_11/msa/content/practice-test/app/`}
             target="_blank"
-            className={"underline"}
+            className={"underline inline-block"}
           >
             AP Biology Quizzes{""}
             <sup>

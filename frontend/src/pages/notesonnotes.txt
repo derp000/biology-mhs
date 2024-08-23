@@ -36,3 +36,29 @@ DON'T: Wait until the last minute to fill gaps of knowledge
 
 won't be a problem if you have good notetaking strats, 
 if that's the case then studying day before might be enough
+
+Purpose
+
+Magnet BioMentor was created as a study tool for Dr. Gupta's Freshman-year Biology course. 
+Magnet freshmen may find Biology daunting at first but incredibly rewarding; 
+in fact, many motivated freshmen have gotten 5's on the AP Biology test based on the freshman-year content alone.
+In other words, Dr. Gupta's class will ultimately prepare Magnet students for college rigor and styles of teaching.
+It is however necessary for freshmen to learn how to adapt to this elevated course rigor, which Magnet BioMentor aims to facilitate.
+
+Features
+
+> Accessibility
+Magnet BioMentor follows the same chapters/curriculum as taught in Dr. Gupta's class. Within each chapter, you will find
+resources ranging from lecture slides to videos and worksheet PDFs. These resources originate from Freshman/AP Biology Google Classroom 
+posts and videos I personally found beneficial. This way, students do not need to search through Classroom posts themselves and can 
+readily use helpful study materials.
+
+> Self-sufficiency
+Each chapter also comes with quiz questions curated from Freshman/AP Biology curriculum. These hand-picked questions 
+place emphasis on key concepts and critical thinking. 
+The Advice page also provides insight into effective learning/study techniques.
+
+About the Developer
+I'm Christopher Cao, Magnet class of 2025, and have taken Freshman Biology, AP Biology, and Fundamentals of Biomedical Engineering 
+with Dr. Gupta. You may learn more about me on my website or connect with me on LinkedIn. This web app was created with 
+React and Firebase using Typescript, Tailwind, and Vite (source on GitHub). I hope that you find this application helpful!
