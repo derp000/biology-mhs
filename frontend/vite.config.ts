@@ -8,6 +8,7 @@ import * as path from "path";
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
+  define: { __APP__ENV__: process.env.VITE_VERCEL_ENV },
   plugins: [react()],
   resolve: {
     alias: {
