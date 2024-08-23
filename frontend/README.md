@@ -2,6 +2,8 @@
 
 Run `cd SnailSite`, then `npm i`, then `npm run dev`
 
+Note that the Firebase config is exposed to client. However, this is not necessarily problematic as the API key is not a secret and can be restricted. See the [docs](https://firebase.google.com/docs/projects/api-keys#general-info) for more info.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
