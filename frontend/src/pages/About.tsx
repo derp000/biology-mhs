@@ -58,8 +58,9 @@ const About = () => {
             </sup>
           </NavLink>
           . These hand-picked questions place emphasis on key concepts and
-          critical thinking. The Advice page also provides insight into
-          effective learning/study techniques.
+          critical thinking. Incorrectly-answered questions are tied to the
+          user's Google account, enabling customized review. The Advice page
+          also provides insight into effective learning/study techniques.
         </p>
         <h1 className="font-bold text-3xl mt-4">About the Developer</h1>
         <p className="text-xl">
