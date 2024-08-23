@@ -15,6 +15,10 @@ import { default as q13 } from "./Chapter13Questions";
 import { default as q14 } from "./Chapter14Questions";
 import { default as q15 } from "./Chapter15Questions";
 import { default as q16 } from "./Chapter16Questions";
+import { default as q17 } from "./Chapter17Questions";
+import { default as q18 } from "./Chapter18Questions";
+import { default as q19 } from "./Chapter19Questions";
+import { default as q20 } from "./Chapter20Questions";
 
 const questionLists: QuizQuestionList[] = [
   q1,
@@ -33,6 +37,10 @@ const questionLists: QuizQuestionList[] = [
   q14,
   q15,
   q16,
+  q17,
+  q18,
+  q19,
+  q20,
 ];
 
 export default questionLists;
