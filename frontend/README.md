@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# React + Firebase + TypeScript + Vite
 
 Run `cd SnailSite`, then `npm i`, then `npm run dev`
 
