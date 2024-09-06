@@ -4,7 +4,7 @@ import { ExternalLinkOutline } from "@emotion-icons/evaicons-outline/ExternalLin
 const Advice = () => {
   return (
     <div className="bg-gradient-to-r from-emerald-700 to-cyan-500">
-      <div className="max-w-[72rem] bg-slate-100 mx-auto p-24 shadow-[0_5px_10px_5px_rgb(241_245_249)]">
+      <div className="max-w-[72rem] bg-slate-100 mx-auto lg:p-24 p-6 shadow-[0_5px_10px_5px_rgb(241_245_249)]">
         <h1 className="font-bold text-3xl">1. Take notes before class</h1>
         <p className="text-xl ml-12">
           You will find most classes are taught lecture style. Thus if you don't

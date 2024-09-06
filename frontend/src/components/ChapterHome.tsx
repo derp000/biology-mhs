@@ -33,16 +33,16 @@ const ChapterHome = () => {
 
   return (
     <div className="bg-background min-h-[100dvh] flex justify-center items-center">
-      <div className="flex flex-col gap-5 text-black w-[72rem]">
-        <h1 className="text-4xl font-bold">
+      <div className="flex flex-col gap-5 text-black w-[72rem] lg:m-0 m-4">
+        <h1 className="lg:text-4xl text-2xl font-bold">
           Chapter {chapterNumber}: {chapters[Number(chapterNumber) - 1].title}
         </h1>
         <div className="bg-background-200 p-5 rounded-md">
-          <div className="m-5">
-            <h2 className="font-semibold text-2xl mb-5 text-white text-center">
+          <div className="lg:m-5">
+            <h2 className="font-semibold lg:text-2xl text-xl lg:mb-5 mb-2 text-white text-center">
               Resources
             </h2>
-            <div className="flex flex-wrap justify-center text-white gap-3 text-xl">
+            <div className="flex flex-wrap justify-center text-white gap-3 lg:text-xl text-md">
               {chapters[Number(chapterNumber) - 1].resources.map(
                 ({ name, to }) => (
                   <NavLink
@@ -62,11 +62,11 @@ const ChapterHome = () => {
         </div>
 
         <div className="bg-secondary-100 p-5 rounded-md">
-          <div className="m-5">
-            <h2 className="font-semibold text-2xl mb-5 text-white text-center">
+          <div className="lg:m-5">
+            <h2 className="font-semibold lg:text-2xl text-xl lg:mb-5 mb-2 text-white text-center">
               Test your knowledge
             </h2>
-            <div className="flex flex-row justify-center text-white gap-3 text-xl">
+            <div className="flex flex-row justify-center text-white gap-3 lg:text-xl text-md">
               <NavLink
                 to="quiz"
                 className="bg-secondary-600 text-text font-semibold rounded-lg p-4"

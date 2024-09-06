@@ -47,17 +47,20 @@ const About = () => {
             </sup>
           </NavLink>
           {" and "}
-          <NavLink
-            to={`https://media.pearsoncmg.com/bc/bc_campbell_biology_11/msa/content/practice-test/app/`}
-            target="_blank"
-            className={"underline inline-block"}
-          >
-            AP Biology Quizzes{""}
-            <sup>
-              <ExternalLinkOutline height={15} width={15} />
-            </sup>
-          </NavLink>
-          . These hand-picked questions place emphasis on key concepts and
+          <div className="inline-block">
+            <NavLink
+              to={`https://media.pearsoncmg.com/bc/bc_campbell_biology_11/msa/content/practice-test/app/`}
+              target="_blank"
+              className={"underline"}
+            >
+              AP Biology Quizzes{""}
+              <sup>
+                <ExternalLinkOutline height={15} width={15} />
+              </sup>
+            </NavLink>
+            {"."}
+          </div>{" "}
+          These hand-picked questions place emphasis on key concepts and
           critical thinking. Incorrectly-answered questions are tied to the
           user's Google account, enabling customized review. The Advice page
           also provides insight into effective learning/study techniques.
@@ -89,7 +92,7 @@ const About = () => {
             </sup>
           </NavLink>
           . This project was created with React and Firebase using Typescript,
-          Tailwind, and Vite (source on
+          Tailwind, and Vite (source on{" "}
           <NavLink
             to={`https://github.com/derp000/biology-mhs`}
             target="_blank"

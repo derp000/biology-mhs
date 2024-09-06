@@ -17,7 +17,7 @@ const Home = () => {
     units.push(
       <NavLink
         to={`/chapter/${i + 1}`}
-        className="bg-slate-100 text-center text-2xl font-semibold rounded-lg p-4"
+        className="bg-slate-100 text-center lg:text-2xl text-md font-semibold rounded-lg p-4"
       >
         <button>
           Chapter {i + 1}: {chapters[i].title}
@@ -38,25 +38,25 @@ const Home = () => {
   }, [auth]);
 
   return (
-    <div className="p-12 bg-slate-100">
+    <div className="lg:p-12 p-6 bg-slate-100">
       <div className="flex flex-col gap-5 text-text max-w-[72rem] mx-auto">
         {name && (
-          <div className="text-text text-2xl mb-2">
+          <div className="text-text lg:text-2xl text-lg lg:mb-2">
             <span>Welcome back, </span>
             <span className="font-bold">{name.split(" ")[0]}</span>!
           </div>
         )}
         <div className="bg-primary p-5 rounded-md">
-          <div className="m-5">
-            <h2 className="font-bold text-3xl mb-5 text-white text-center">
+          <div className="lg:m-5">
+            <h2 className="font-bold lg:text-3xl text-xl mb-5 text-white text-center">
               Review gaps in knowledge
             </h2>
-            <div className="flex flex-row justify-center text-white gap-3 text-xl">
+            <div className="flex lg:flex-row flex-col justify-center text-white gap-3 lg:text-xl text-lg">
               <NavLink
                 to={`/cumulativereview`}
                 className="bg-secondary-600 text-text font-semibold rounded-lg p-4"
               >
-                <button className="flex flex-row items-center">
+                <button className="flex flex-row items-center lg:gap-0 gap-2">
                   <Quiz height={50} width={50} />
                   Cumulative Review Quiz
                 </button>
@@ -66,7 +66,7 @@ const Home = () => {
                 target="_blank"
                 className="bg-secondary-600 text-text font-semibold rounded-lg p-4"
               >
-                <button className="flex flex-row items-center">
+                <button className="flex flex-row items-center lg:gap-0 gap-2">
                   <Khanacademy height={50} width={50} />
                   Khan Academy Biology
                 </button>
@@ -76,7 +76,7 @@ const Home = () => {
                 target="_blank"
                 className="bg-secondary-600 text-text font-semibold rounded-lg p-4"
               >
-                <button className="flex flex-row items-center">
+                <button className="flex flex-row items-center lg:gap-0 gap-2">
                   <Pencil height={50} width={50} />
                   FRQ Practice by Topic
                 </button>
@@ -85,7 +85,7 @@ const Home = () => {
                 to={"advice"}
                 className="bg-secondary-600 text-text font-semibold rounded-lg p-4"
               >
-                <button className="flex flex-row items-center">
+                <button className="flex flex-row items-center lg:gap-0 gap-2">
                   <LightBulb height={50} width={50} />
                   Study Advice
                 </button>
@@ -94,8 +94,8 @@ const Home = () => {
           </div>
         </div>
         <div className="bg-accent-200 p-5 rounded-md">
-          <div className="m-5">
-            <h2 className="font-bold text-3xl text-white text-center mb-5">
+          <div className="lg:m-5">
+            <h2 className="font-bold lg:text-3xl text-xl text-white text-center mb-5">
               Study by chapter
             </h2>
             <div className="gap-3 flex flex-col">{units}</div>

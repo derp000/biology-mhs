@@ -109,24 +109,24 @@ const Quiz = () => {
   return (
     <div className="bg-text-700 py-10 min-h-[100dvh] flex justify-center items-center">
       <div>
-        <div className="text-white w-[72rem]">
+        <div className="text-white xl:w-[72rem] md:w-[40rem] w-[20rem]">
           {showScore ? (
             <div className="text-center">
-              <h1 className="text-5xl mb-5">
+              <h1 className="lg:text-5xl text-3xl mb-5">
                 You got{" "}
                 <span className="font-semibold">
                   {score}/{questions.length}
                 </span>{" "}
                 questions correct!
               </h1>
-              <p className="text-4xl mb-3">
+              <p className="lg:text-4xl text-2xl mb-3">
                 You got the following questions wrong:
               </p>
-              <ol className="list-decimal">
+              <ol className="list-decimal m-5 lg:m-0">
                 {wrongs.map((wrongIndex) => (
                   <li
                     key={wrongIndex}
-                    className="text-3xl text-left font-semibold"
+                    className="lg:text-3xl text-lg text-left font-semibold leading-tight"
                   >
                     {questions[wrongIndex].question}{" "}
                     <span className="font-bold text-accent-400">
@@ -149,7 +149,7 @@ const Quiz = () => {
                 <h1 className="text-2xl font-semibold">
                   Question {currentQuestion + 1}/{questions.length}
                 </h1>
-                <p className="text-5xl font-bold">
+                <p className="lg:text-5xl text-3xl font-bold">
                   {questions[currentQuestion].question}
                 </p>
               </div>
